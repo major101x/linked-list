@@ -15,6 +15,19 @@ class LinkedList {
       tmp.next = new Node(value);
     }
   }
+
+  /* Adds new node to the beginning of the list */
+  prepend(value) {
+    if (!this.head) {
+      this.head = new Node(value);
+    } else {
+      let tmp = this.head;
+
+      this.head = new Node(value);
+
+      this.head.next = tmp;
+    }
+  }
 }
 
 class Node {
@@ -32,5 +45,7 @@ list.append("parrot");
 list.append("hamster");
 list.append("snake");
 list.append("turtle");
+
+list.prepend("foo");
 
 console.log(list);
