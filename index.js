@@ -28,6 +28,20 @@ class LinkedList {
       this.head.next = tmp;
     }
   }
+
+  /* Returns total number of nodes in the list */
+  size() {
+    let count = 0;
+
+    let pointer = this.head;
+
+    while (pointer !== null) {
+        count++
+        pointer = pointer.next;
+    }
+
+    return count;
+  }
 }
 
 class Node {
@@ -47,5 +61,7 @@ list.append("snake");
 list.append("turtle");
 
 list.prepend("foo");
+
+console.log(list.size());
 
 console.log(list);
