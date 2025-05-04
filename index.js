@@ -3,10 +3,10 @@ console.log("Console working!");
 class LinkedList {
   /* Adds new node to the end of the list */
   append(value) {
-    if (!this.head) {
-      this.head = new Node(value);
+    if (!this.headNode) {
+      this.headNode = new Node(value);
     } else {
-      let tmp = this.head;
+      let tmp = this.headNode;
 
       while (tmp.next) {
         tmp = tmp.next;
@@ -18,25 +18,25 @@ class LinkedList {
 
   /* Adds new node to the beginning of the list */
   prepend(value) {
-    if (!this.head) {
-      this.head = new Node(value);
+    if (!this.headNode) {
+      this.headNode = new Node(value);
     } else {
-      let tmp = this.head;
+      let tmp = this.headNode;
 
-      this.head = new Node(value);
+      this.headNode = new Node(value);
 
-      this.head.next = tmp;
+      this.headNode.next = tmp;
     }
   }
 
   /* Returns total number of nodes in the list */
   size() {
-    if (!this.head) {
+    if (!this.headNode) {
       return 0;
     } else {
       let count = 1;
 
-      let pointer = this.head;
+      let pointer = this.headNode;
 
       while (pointer !== null) {
         pointer = pointer.next;
@@ -45,6 +45,10 @@ class LinkedList {
 
       return count;
     }
+  }
+
+  head() {
+    return this.headNode;
   }
 }
 
@@ -68,6 +72,6 @@ list.prepend("foo");
 
 console.log(list.size());
 
-console.log(list.head);
+console.log(list.head());
 
 // console.log(list);
