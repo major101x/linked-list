@@ -69,6 +69,22 @@ class LinkedList {
       return tail;
     }
   }
+
+  /* Returns node at given index */
+  at(index) {
+    let count = 0;
+    let pointer = this.headNode;
+    while (index !== count) {
+      if (pointer.next === null) {
+        return new Error("Node does not exist");
+      }
+      pointer = pointer.next;
+      count++;
+    }
+    return pointer;
+  }
+
+
 }
 
 class Node {
@@ -94,3 +110,5 @@ console.log(list.size());
 console.log(list.head());
 
 console.log(list.tail());
+
+console.log(list.at(3));
