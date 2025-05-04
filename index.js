@@ -38,9 +38,9 @@ class LinkedList {
 
       let pointer = this.headNode;
 
-      while (pointer !== null) {
-        pointer = pointer.next;
+      while (pointer.next !== null) {
         count++;
+        pointer = pointer.next;
       }
 
       return count;
