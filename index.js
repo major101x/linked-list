@@ -47,7 +47,11 @@ class LinkedList {
     }
   }
 
+  /* Returns head node of the list */
   head() {
+    if (!this.headNode) {
+      return null; // Return null if no nodes exist
+    }
     return this.headNode;
   }
 
