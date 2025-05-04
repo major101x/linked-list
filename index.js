@@ -50,6 +50,21 @@ class LinkedList {
   head() {
     return this.headNode;
   }
+
+  /* Returns tail node of the list */
+  tail() {
+    let tail = this.headNode; // Tail node is head node if only one node exists
+
+    if (!tail) {
+      return null; // Tail node is null if no nodes exist
+    } else {
+      while (tail.next !== null) {
+        tail = tail.next;
+      }
+
+      return tail;
+    }
+  }
 }
 
 class Node {
@@ -61,17 +76,17 @@ class Node {
 
 const list = new LinkedList();
 
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
+// list.append("dog");
+// list.append("cat");
+// list.append("parrot");
+// list.append("hamster");
+// list.append("snake");
+// list.append("turtle");
 
-list.prepend("foo");
+// list.prepend("foo");
 
 console.log(list.size());
 
 console.log(list.head());
 
-// console.log(list);
+console.log(list.tail());
