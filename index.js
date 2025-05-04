@@ -72,6 +72,10 @@ class LinkedList {
 
   /* Returns node at given index */
   at(index) {
+    if (!this.headNode) {
+      return new Error("No Nodes in list"); // Return null if no nodes exist
+    }
+
     let count = 0;
     let pointer = this.headNode;
     while (index !== count) {
@@ -84,7 +88,26 @@ class LinkedList {
     return pointer;
   }
 
+  /* Removes last node from the list */
+  pop() {
+    if (!this.headNode) {
+      return new Error("No Nodes in list"); // Return null if no nodes exist
+    } else if (this.headNode.next === null) {
+      this.headNode = this.headNode.next; // Remove head node if only head node exists
+    } else {
+      let currPointer = this.headNode;
+      let prevPointer = null;
 
+      while (currPointer.next !== null) {
+        prevPointer = currPointer;
+        currPointer = currPointer.next;
+      }
+
+      /* Sets the next node of the previous node to the next
+     node of the current node, which is null */
+      prevPointer.next = currPointer.next;
+    }
+  }
 }
 
 class Node {
@@ -96,12 +119,12 @@ class Node {
 
 const list = new LinkedList();
 
-list.append("dog");
-list.append("cat");
-list.append("parrot");
-list.append("hamster");
-list.append("snake");
-list.append("turtle");
+// list.append("dog");
+// list.append("cat");
+// list.append("parrot");
+// list.append("hamster");
+// list.append("snake");
+// list.append("turtle");
 
 list.prepend("foo");
 
@@ -112,3 +135,7 @@ console.log(list.head());
 console.log(list.tail());
 
 console.log(list.at(3));
+
+list.pop();
+
+console.log(list.tail());
