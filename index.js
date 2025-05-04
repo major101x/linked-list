@@ -8,7 +8,7 @@ class LinkedList {
     } else {
       let tmp = this.head;
 
-      while (tmp.next !== null) {
+      while (tmp.next) {
         tmp = tmp.next;
       }
 
@@ -31,16 +31,20 @@ class LinkedList {
 
   /* Returns total number of nodes in the list */
   size() {
-    let count = 0;
+    if (!this.head) {
+      return 0;
+    } else {
+      let count = 1;
 
-    let pointer = this.head;
+      let pointer = this.head;
 
-    while (pointer !== null) {
-        count++
+      while (pointer !== null) {
         pointer = pointer.next;
-    }
+        count++;
+      }
 
-    return count;
+      return count;
+    }
   }
 }
 
@@ -64,4 +68,6 @@ list.prepend("foo");
 
 console.log(list.size());
 
-console.log(list);
+console.log(list.head);
+
+// console.log(list);
