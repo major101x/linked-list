@@ -108,6 +108,22 @@ class LinkedList {
       prevPointer.next = currPointer.next;
     }
   }
+
+  /* Checks if node exists on the list */
+  contains(value) {
+    let pointer = this.headNode;
+    let matchFound = false;
+
+    while (matchFound === false && pointer.next !== null) {
+      if (pointer.value === value) {
+        matchFound = true;
+      } else {
+        pointer = pointer.next;
+      }
+    }
+
+    return matchFound;
+  }
 }
 
 class Node {
@@ -119,12 +135,12 @@ class Node {
 
 const list = new LinkedList();
 
-// list.append("dog");
-// list.append("cat");
-// list.append("parrot");
-// list.append("hamster");
-// list.append("snake");
-// list.append("turtle");
+list.append("dog");
+list.append("cat");
+list.append("parrot");
+list.append("hamster");
+list.append("snake");
+list.append("turtle");
 
 list.prepend("foo");
 
@@ -137,5 +153,7 @@ console.log(list.tail());
 console.log(list.at(3));
 
 list.pop();
+
+console.log(list.contains("foo"));
 
 console.log(list.tail());
