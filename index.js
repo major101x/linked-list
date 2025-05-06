@@ -124,6 +124,24 @@ class LinkedList {
 
     return matchFound;
   }
+
+  /* Returns index of node containing value, or null if not found */
+  find(value) {
+    let pointer = this.headNode;
+    let indexFound = null;
+    let index = 0;
+
+    while (indexFound === null && pointer !== null) {
+      if (pointer.value === value) {
+        indexFound = index;
+      } else {
+        pointer = pointer.next;
+        index++;
+      }
+    }
+
+    return indexFound;
+  }
 }
 
 class Node {
@@ -154,6 +172,8 @@ console.log(list.at(3));
 
 list.pop();
 
+console.log(list.tail());
+
 console.log(list.contains("foo"));
 
-console.log(list.tail());
+console.log(list.find("foo"));
