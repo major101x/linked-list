@@ -161,7 +161,7 @@ class LinkedList {
   /* Inserts a node at a given index */
   insertAt(value, index) {
     if (index === 0) {
-      this.headNode = new Node(value, this.headNode);  // Replace head node if list has only one node
+      this.headNode = new Node(value, this.headNode); // Replace head node if list has only one node
     } else {
       let currPointer = this.headNode;
       let prevPointer = null;
@@ -169,7 +169,7 @@ class LinkedList {
 
       while (count !== index) {
         if (currPointer.next === null) {
-          console.error("Node does not exist");  // Return error if node does not exist
+          console.error("Node does not exist"); // Return error if node does not exist
           return;
         } else {
           prevPointer = currPointer;
@@ -180,6 +180,30 @@ class LinkedList {
 
       /* Replace current node value with new node and update next nodes */
       prevPointer.next = new Node(value, currPointer);
+    }
+  }
+
+  removeAt(index) {
+    if (index === 0) {
+      this.headNode = this.headNode.next; // Replace head node with head node's next node
+    } else {
+      let currPointer = this.headNode;
+      let prevPointer = null;
+      let count = 0;
+
+      while (count !== index) {
+        if (currPointer.next === null) {
+          console.error("Node does not exist"); // Return error if node does not exist
+          return;
+        } else {
+          prevPointer = currPointer;
+          currPointer = currPointer.next;
+          count++;
+        }
+      }
+
+      /* Replace current node value with next node's next node, thus removing next node value */
+      prevPointer.next = currPointer.next;
     }
   }
 }
@@ -193,6 +217,7 @@ class Node {
 
 const list = new LinkedList();
 
+/* TEST CODE. Delete or use as you wish */
 list.append("dog");
 list.append("cat");
 list.append("parrot");
@@ -202,26 +227,26 @@ list.append("turtle");
 
 list.prepend("foo");
 
-// console.log(list.size());
+console.log(list.size());
 
-// console.log(list.head());
+console.log(list.head());
 
-// console.log(list.tail());
+console.log(list.tail());
 
-// console.log(list.at(3));
+console.log(list.at(3));
 
-// list.pop();
+list.pop();
 
-// console.log(list.tail());
+console.log(list.tail());
 
-// console.log(list.contains("foo"));
+console.log(list.contains("foo"));
 
-// console.log(list.find("foo"));
+console.log(list.find("foo"));
 
-// console.log(list.toString());
+console.log(list.toString());
 
 console.log(list.at(6));
 
-list.insertAt("hallo", 6);
+list.removeAt(6);
 
 console.log(list.at(6));
