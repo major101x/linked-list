@@ -142,6 +142,21 @@ class LinkedList {
 
     return indexFound;
   }
+
+  /* Represents list objects as strings */
+  toString() {
+    let pointer = this.headNode;
+    if (!pointer) {
+      return null; // Return null if no nodes exist
+    } else {
+      let string = "";
+      while (pointer !== null) {
+        string += `( ${pointer.value} ) -> `;
+        pointer = pointer.next;
+      }
+      return string + "null";
+    }
+  }
 }
 
 class Node {
@@ -177,3 +192,5 @@ console.log(list.tail());
 console.log(list.contains("foo"));
 
 console.log(list.find("foo"));
+
+console.log(list.toString());
